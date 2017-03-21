@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default" defaultIdMethod="native" defaultPhpNamingMethod="underscore">
+  <table name="departamentos" idMethod="native" phpName="Departamentos">
+    <column name="departid" phpName="Departid" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="descripcion" phpName="Descripcion" type="VARCHAR" size="45"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="empleados" idMethod="native" phpName="Empleados">
+    <column name="idempledos" phpName="Idempledos" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="nombre" phpName="Nombre" type="VARCHAR" size="45" required="true"/>
+    <column name="ap_paterno" phpName="ApPaterno" type="VARCHAR" size="45" required="true"/>
+    <column name="ap_materno" phpName="ApMaterno" type="VARCHAR" size="45" required="true"/>
+    <column name="edad" phpName="Edad" type="INTEGER"/>
+    <column name="sexo" phpName="Sexo" type="VARCHAR" size="45"/>
+    <column name="numero_empleados" phpName="NumeroEmpleados" type="VARCHAR" size="45"/>
+    <column name="depart_id" phpName="DepartId" type="INTEGER" required="true"/>
+    <foreign-key foreignTable="departamentos" name="fk_depart">
+      <reference local="depart_id" foreign="departid"/>
+    </foreign-key>
+    <index name="fk_depart_idx">
+      <index-column name="depart_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+   <table name="productos" phpName="productos">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="cod" type="integer" required="true"/>
+        <column name="nombre" type="varchar" size="128" required="true"/>
+   </table>
+</database>
